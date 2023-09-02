@@ -1,469 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Daniel Merino Benito</title>
-	<!--Core CSS -->
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/animate.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="style.css" rel="stylesheet">
-	<link href="css/style-responsive.css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/countdown.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/timeline.css">
+    <link rel="stylesheet" href="./css/nav.css">
 </head>
 
 <body>
 
-	<script type="text/javascript" src="js/cloud/three.min.js"></script>
-	<script type="text/javascript" src="js/cloud/detector.js"></script>
-
-	<script id="vs" type="x-shader/x-vertex">
-
-			varying vec2 vUv;
-
-			void main() {
-
-			vUv = uv;
-			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-
-			}
-
-		</script>
-
-	<script id="fs" type="x-shader/x-fragment">
-
-			uniform sampler2D map;
-
-			uniform vec3 fogColor;
-			uniform float fogNear;
-			uniform float fogFar;
-
-			varying vec2 vUv;
-
-			void main() {
-
-			float depth = gl_FragCoord.z / gl_FragCoord.w;
-			float fogFactor = smoothstep( fogNear, fogFar, depth );
-
-			gl_FragColor = texture2D( map, vUv );
-			gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
-			gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
-
-			}
-
-		</script>
-
-	<script type="text/javascript">
-		if (!Detector.webgl)
-			Detector.addGetWebGLMessage();
-
-		var container;
-		var camera, scene, renderer;
-		var mesh, geometry, material;
-
-		var mouseX = 0, mouseY = 0;
-		var start_time = Date.now();
-
-		var windowHalfX = window.innerWidth / 2;
-		var windowHalfY = window.innerHeight / 2;
-
-		init();
-
-		function init() {
-
-			container = document.createElement('div');
-			container.className = "cloud";
-			document.body.appendChild(container);
-
-			// Bg gradient
-
-			var canvas = document.createElement('canvas');
-			canvas.width = 32;
-			canvas.height = window.innerHeight;
-
-			var context = canvas.getContext('2d');
-
-			var gradient = context.createLinearGradient(0, 0, 0, canvas.height);
-			gradient.addColorStop(0, "#1e4877");
-			gradient.addColorStop(0.5, "#4584b4");
-
-			context.fillStyle = gradient;
-			context.fillRect(0, 0, canvas.width, canvas.height);
-
-			//
-
-			camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 3000);
-			camera.position.z = 6000;
-
-			scene = new THREE.Scene();
-
-			geometry = new THREE.Geometry();
-
-			var texture = THREE.ImageUtils.loadTexture('images/cloud.png', null, animate);
-			texture.magFilter = THREE.LinearMipMapLinearFilter;
-			texture.minFilter = THREE.LinearMipMapLinearFilter;
-
-			var fog = new THREE.Fog(0x4584b4, -100, 3000);
-
-			material = new THREE.ShaderMaterial({
-
-				uniforms: {
-
-					"map": {
-						type: "t",
-						value: texture
-					},
-					"fogColor": {
-						type: "c",
-						value: fog.color
-					},
-					"fogNear": {
-						type: "f",
-						value: fog.near
-					},
-					"fogFar": {
-						type: "f",
-						value: fog.far
-					},
-
-				},
-				vertexShader: document.getElementById('vs').textContent,
-				fragmentShader: document.getElementById('fs').textContent,
-				depthWrite: false,
-				depthTest: false,
-				transparent: true
-
-			});
-
-			var plane = new THREE.Mesh(new THREE.PlaneGeometry(64, 64));
-
-			for (var i = 0; i < 8000; i++) {
-
-				plane.position.x = Math.random() * 1000 - 500;
-				plane.position.y = -Math.random() * Math.random() * 200 - 15;
-				plane.position.z = i;
-				plane.rotation.z = Math.random() * Math.PI;
-				plane.scale.x = plane.scale.y = Math.random() * Math.random() * 1.5 + 0.5;
-
-				THREE.GeometryUtils.merge(geometry, plane);
-
-			}
-
-			mesh = new THREE.Mesh(geometry, material);
-			scene.add(mesh);
-
-			mesh = new THREE.Mesh(geometry, material);
-			mesh.position.z = -8000;
-			scene.add(mesh);
-
-			renderer = new THREE.WebGLRenderer({
-				antialias: false
-			});
-			renderer.setSize(window.innerWidth, window.innerHeight);
-			container.appendChild(renderer.domElement);
-
-			//	document.addEventListener('mousemove', onDocumentMouseMove, false);
-			window.addEventListener('resize', onWindowResize, false);
-
-		}
-
-		function onDocumentMouseMove(event) {
-
-			mouseX = (event.clientX - windowHalfX) * 0.25;
-			mouseY = (event.clientY - windowHalfY) * 0.15;
-
-		}
-
-		function onWindowResize(event) {
-
-			camera.aspect = window.innerWidth / window.innerHeight;
-			camera.updateProjectionMatrix();
-
-			renderer.setSize(window.innerWidth, window.innerHeight);
-
-		}
-
-		function animate() {
-
-			requestAnimationFrame(animate);
-
-			position = ((Date.now() - start_time) * 0.03) % 8000;
-
-			camera.position.x += (mouseX - camera.position.x) * 0.01;
-			camera.position.y += (-mouseY - camera.position.y) * 0.01;
-			camera.position.z = -position + 8000;
-
-			renderer.render(scene, camera);
-
-		}
-
-	</script>
-	<!-- Header Section Start -->
-	<header id="header_part">
-
-
-		<div class="header_part" id="head">
-			<div class="overlay">
-				<div class="start_part">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="row">
-									<!-- Social Links -->
-									<nav class="social-nav">
-										<ul>
-											<li><a href="images\social\CV.pdf" download><img src="images/social/icon-pdf.png" alt="PDF icon" width="20px" height="20px"></a></li>
-											<li><a href="https://www.linkedin.com/in/merino-benito/" target="_blank"><img src="images/social/icon-linkedin.png" alt="Linkedin icon"></a></li>
-											<li><a href="https://github.com/MBDani" target="_blank"><img src="images/social/icon-github.png" alt="Github icon" width="20px" height="20px"></a></li>
-										</ul>
-									</nav>
-									<!-- Site Title start-->
-									<div class="site_title">
-										<h1>Comming Soon!</h1>
-										<p>
-											I am currently working on finishing the website.
-											Don't forget to subscribe to know when it's ready!<br />
-										</p>
-									</div>
-									<!-- Site Title end-->
-									<!-- Countdown start -->
-									<div class="wow zoomIn">
-
-										<div class="countdown countdown-container container">
-											<div class="clock row">
-												<div
-													class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
-													<div class="wrap">
-														<div class="inner">
-															<div id="canvas-days" class="clock-canvas"></div>
-
-															<div class="text">
-																<p class="val">0</p>
-																<p class="type-days type-time">DAYS</p>
-															</div><!-- /.text -->
-														</div><!-- /.inner -->
-													</div><!-- /.wrap -->
-												</div><!-- /.clock-item -->
-
-												<div
-													class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
-													<div class="wrap">
-														<div class="inner">
-															<div id="canvas-hours" class="clock-canvas"></div>
-
-															<div class="text">
-																<p class="val">0</p>
-																<p class="type-hours type-time">HOURS</p>
-															</div><!-- /.text -->
-														</div><!-- /.inner -->
-													</div><!-- /.wrap -->
-												</div><!-- /.clock-item -->
-
-												<div
-													class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
-													<div class="wrap">
-														<div class="inner">
-															<div id="canvas-minutes" class="clock-canvas"></div>
-
-															<div class="text">
-																<p class="val">0</p>
-																<p class="type-minutes type-time">MINUTES</p>
-															</div><!-- /.text -->
-														</div><!-- /.inner -->
-													</div><!-- /.wrap -->
-												</div><!-- /.clock-item -->
-
-												<div
-													class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-													<div class="wrap">
-														<div class="inner">
-															<div id="canvas-seconds" class="clock-canvas"></div>
-
-															<div class="text">
-																<p class="val">0</p>
-																<p class="type-seconds type-time">SECONDS</p>
-															</div><!-- /.text -->
-														</div><!-- /.inner -->
-													</div><!-- /.wrap -->
-												</div><!-- /.clock-item -->
-											</div><!-- /.clock -->
-										</div><!-- /.countdown-wrapper -->
-									</div>
-									<!-- Countdown end-->
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<!-- Subscriber Section Start -->
-	<section id="email_subscribe_section">
-		<div class="email_subscribe_section">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<!-- Email Subscriber text start-->
-						<div class="section-title">
-							<h2>Get Notified At Launch</h2>
-							<p>Sign up and we'll notify you of our launch.
-								We’ll also throwin a freebie for your effort :)
-							</p>
-						</div>
-						<!-- Email Subscriber text end-->
-						<div class="email_subscribe_form_part wow zoomIn">
-							<!-- Email Subscribe Form start -->
-							<form method="post" id="subscriber_form" action="contact.php">
-								<input type="email" id="subscriberemail" name="subscriber_email"
-									class="form-control email_input_box" placeholder="example@website.com" required />
-								<button type="submit" class="btn btn-primary email_submit_box"><i
-										class="fa fa-envelope-o"></i> Get Notified</button>
-							</form>
-							<!-- Email Subscribe Form End -->
-							<div id="show_subscriber_msg"></div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Subscriber Section End -->
-	<!-- Contact Section Start -->
-	<section id="contact_section">
-		<div class="contact_section">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="row">
-							<div class="section-title">
-								<h2>Get in touch</h2>
-								<p> Please contact with us for your any kind of query. </p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="contact_form">
-									<div id="show_contact_msg"></div>
-									<!-- Contact Form Start -->
-									<form method="post" id="contact_form" action="contact.php">
-										<input type="text" id="contact_name" name="name"
-											class="form-control contact_input_box wow fadeInUp" placeholder="Name"
-											required />
-										<input type="email" id="contact_email" name="email"
-											class="form-control contact_input_box wow fadeInUp" placeholder="E-mail"
-											required />
-										<textarea id="contact_text" name="message" rows="5" cols="30"
-											class="form-control contact_input_box wow fadeInUp" placeholder="Message"
-											required></textarea>
-										<button type="submit" class="btn btn-primary contact_button wow fadeInUp"> <i
-												class="fa fa-send-o"></i> Send message</button>
-									</form>
-									<!-- Contact Form End -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Contact Section End -->
-
-	<!-- Footer Section -->
-	<footer id="footer-section">
-		<p class="copyright">
-			&copy; <a href="#"> Under construction</a> 2014-2015, All Rights Reserved. Developed by <a
-				href="http://www.codepox.com" target="_">Codepox Technology</a>
-		</p>
-	</footer>
-	<!-- Footer Section End -->
-
-
-	<!--Core js-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.smooth-scroll.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/jquery.nicescroll.min.js"></script>
-	<script src="js/countdown.js"></script>
-	<script type="text/javascript" src="js/kinetic.js"></script>
-	<script type="text/javascript" src="js/jquery.final-countdown.js"></script>
-	<!--common script init for all pages-->
-	<script src="js/script.js"></script>
-
-
-	<script>
-		/* ==============================================
-		Ajax Submiting For Email Subscriber Form.
-		=====================================================================*/
-		$("#subscriber_form").submit(function (e) {
-			$('#show_subscriber_msg').html('<div class=gen>Submiting..</div>');
-			var subscriberemail = $('#subscriberemail').val();
-			var formURL = $(this).attr("action");
-			var data = {
-				subscriberemail: subscriberemail
-			}
-			$.ajax(
-				{
-					url: formURL,
-					type: "POST",
-					data: data,
-
-					success: function (res) {
-						if (res == '1') {
-							$('#show_subscriber_msg').html('<div class=gen>Thank you very much, We will notify you when we lunch</div>');
-						}
-
-						if (res == '5') {
-							$('#show_subscriber_msg').html('<div class=err>Please enter a valid email address</div>');
-						}
-					}
-				});
-			e.preventDefault();	//STOP default action
-		});
-		/* ==============================================
-		Ajax Submiting For Email Contact Form.
-		=====================================================================*/
-		$("#contact_form").submit(function (e) {
-			$('#show_contact_msg').html('<div class=gen>Submiting..</div>');
-			var username = $('#contact_name').val();
-			var useremail = $('#contact_email').val();
-			var commenttext = $('#contact_text').val();
-			var formURL = $(this).attr("action");
-			var data = {
-				username: username,
-				useremail: useremail,
-				commenttext: commenttext,
-			}
-			$.ajax(
-				{
-					url: formURL,
-					type: "POST",
-					data: data,
-
-					success: function (res) {
-						if (res == '1') {
-							$('#show_contact_msg').html('<div class=gen>Thank you very much, We will notify you when we lunch</div>');
-						}
-
-						if (res == '5') {
-							$('#show_contact_msg').html('<div class=err>Please enter a valid email address</div>');
-						}
-					}
-				});
-			e.preventDefault();	//STOP default action
-		});
-	</script>
+    <header>
+        <nav class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg">
+            <a href="#home" class="navbar-brand">DMB</a>
+            <input type="checkbox" id="nav" class="d-none">
+            <label for="nav" class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="wrapper">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#about" onclick="nav">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="d-flex align-items-center vh-100 text-center ">
+        <div class="container">
+            <h1 class="display-4">Daniel Merino Benito</h1>
+            <p class="lead">FullStack Developer</p>
+        </div>
+    </section>
+
+    <section id="about" class="d-flex align-items-center vh-100 text-center ">
+        <div class="container">
+            <h2 class="text-center">About me</h2>
+            <p>+2 years of experience as a Software Developer, during which I have had the opportunity to work on
+                challenging projects that have improved my skills in both backend and frontend development.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="d-flex align-items-center min-vh-100 text-center">
+        <div class="container flex-wrap justify-content-center">
+            <h2 class="text-center">Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/merino-chess2.png" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Merino Chess</h5>
+                            <p class="card-text">Merino Chess</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/controlClientes.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Control de Clientes</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/captchaGame.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Captcha Game</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/tictactoe.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Tic-Tac-Toe</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/duckHunt.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">DuckHunt</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="./assets/jump.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Jump Don't Die</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="min-vh-100">
+        <div class="row ">
+            <h2 class="text-center">Experience</h2>
+            <div class="fullWidth">
+                <ul class="cbp_tmtimeline">
+                    <li>
+                        <div class="cbp_tmicon">
+                            <img class="img-fluid" src="./assets/companies/minsait.png" alt="Logo minsait">
+                        </div>
+                        <div class="cbp_tmlabel">
+                            <h3 class="text-center">FullStack Developer</h3>
+                            <div class="date">
+                                <i class="fa fa-calendar"></i>December 2021 - Current
+                            </div>
+                            <p class="projectParagraph">Final client Movistar <br>
+                                Project GTER - Gestión de Terceros (Third Party Management)
+                            </p>
+                            <p class="projectParagraph">Actively participating in the creation and maintenance of
+                                applications and systems, both on the frontend and backend.</p>
+                            <footer class="mt-2 projectParagraph"> <strong>Technologies: </strong> Java
+                                (microservicios), Spring Boot, AngularJS, Angular, BPM (OSB y SOA), SQL
+                                Developer, Jenkins, Clarive, SonarQube, Jira.
+                            </footer>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cbp_tmicon">
+                            <img class="img-fluid" src="./assets/companies/goldenSoft3.png" alt="Logo minsait">
+                        </div>
+                        <div class="cbp_tmlabel">
+                            <h3 class="text-center">FullStack Developer</h3>
+                            <div class="date">
+                                <i class="fa fa-calendar"></i>December 2021 - Current
+                            </div>
+                            <p class="projectParagraph">Development and maintenance of an ERP (Enterprise resource
+                                planning).</p>
+                            <footer class="mt-2 projectParagraph"> <strong>Technologies: </strong> .NET, Angular, SQL
+                                Server, and Access.
+                            </footer>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cbp_tmicon">
+                            <img class="img-fluid" src="./assets/companies/gt.png" alt="Logo minsait">
+                        </div>
+                        <div class="cbp_tmlabel">
+                            <h3 class="text-center">Forensic IT Specialist</h3>
+                            <div class="date">
+                                <i class="fa fa-calendar"></i>December 2021 - Current
+                            </div>
+                            <p class="projectParagraph">Development of an evidence inventory tool from scratch.</p>
+                            <footer class="mt-2 projectParagraph"> <strong>Technologies: </strong> Java, Swing, MySQL
+                            </footer>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="contact" class="d-flex align-items-center vh-100 text-center">
+        <div class="container">
+            <h2 class="text-center">Contacto</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form onsubmit="sendMail()">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
+<script src="https://kit.fontawesome.com/76a0244cdf.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="./scripts.js"></script>
+
+<!-- email -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init("iCeeJcTeKnuiflWLv");
+    })();
+</script>
 
 </html>

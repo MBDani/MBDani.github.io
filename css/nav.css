@@ -1,0 +1,211 @@
+.nav-link,
+.navbar-brand {
+    position: relative;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: -0.13px;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: all 0.5s ease;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+    color: rgb(168, 239, 255, 0.9);
+}
+
+.nav-link::after,
+.navbar-brand::after {
+    content: "";
+    position: absolute;
+    bottom: -0.3rem;
+    left: 50%;
+    width: 0;
+    height: 0.15rem;
+    transform: translateX(-50%);
+    background-color: rgb(168, 239, 255, 0.9);
+    transition: all 0.5s ease;
+}
+
+.nav-link:hover::after,
+.navbar-brand:hover::after {
+    width: 100%;
+}
+
+/* Animación navbar para cuando hacemos scroll */
+.navbar-scroll-black {
+    background-color: #343a40;
+    transition: background-color 0.3s ease;
+    /* Transición suave del color de fondo */
+    /* Otros estilos según tus necesidades */
+}
+
+
+/* Esta es la clase que usamos para saber en que sección nos encontramos */
+.section-active {
+    color: rgb(168, 239, 255, 0.9);
+}
+
+.navbar-section-light {
+    background-color: #f8f9fa;
+    color: #343a40;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-section-black {
+    background-color: #343a40;
+    color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+@media only screen and (max-width: 990px) {
+    header .navbar {
+        padding: 1rem 2rem;
+        margin: 0 auto;
+    }
+
+    header .navbar .wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0;
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        transition: all 0.5s ease;
+    }
+
+    header .navbar .wrapper .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 25%;
+        width: 100%;
+        transform: translateY(-50%);
+    }
+
+    header .navbar .wrapper .nav-item {
+        padding-bottom: 1rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    header .navbar .wrapper .nav-item:nth-child(1) a {
+        transition-delay: 0.2s;
+    }
+
+    header .navbar .wrapper .nav-item:nth-child(2) a {
+        transition-delay: 0.3s;
+    }
+
+    header .navbar .wrapper .nav-item:nth-child(3) a {
+        transition-delay: 0.4s;
+    }
+
+    header .navbar .wrapper .nav-item:nth-child(4) a {
+        transition-delay: 0.5s;
+    }
+
+    header .navbar .wrapper .nav-item:not(:first-child) {
+        margin-left: 0;
+    }
+
+    header .navbar .wrapper .nav-item a {
+        padding: 1rem 2rem;
+        opacity: 0;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        transform: translateX(-20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    header .navbar .nav-toggle {
+        display: block;
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    header .navbar .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #000000;
+        border-radius: 2px;
+        margin-left: 14px;
+    }
+
+    header .navbar .nav-toggle span:nth-child(1) {
+        margin-top: 16px;
+    }
+
+    header .navbar .nav-toggle span:nth-child(2) {
+        margin-top: 4px;
+        opacity: 1;
+    }
+
+    header .navbar .nav-toggle span:nth-child(3) {
+        margin-top: 4px;
+    }
+
+    header .navbar #nav:checked+.nav-toggle {
+        transform: rotate(45deg);
+    }
+
+    header .navbar #nav:checked+.nav-toggle span {
+        background: #fff;
+        transition: transform 0.5s ease;
+    }
+
+    header .navbar #nav:checked+.nav-toggle span:nth-child(1) {
+        transform: translateY(6px) rotate(180deg);
+    }
+
+    header .navbar #nav:checked+.nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    header .navbar #nav:checked+.nav-toggle span:nth-child(3) {
+        transform: translateY(-6px) rotate(90deg);
+    }
+
+    header .navbar #nav:checked~.wrapper {
+        z-index: 99;
+        opacity: 1;
+    }
+
+    header .navbar #nav:checked~.wrapper .nav-item a {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    header .navbar #nav:not(:checked)+.nav-toggle span {
+        /* Agrega estilos de animación cuando #nav deja de estar marcado */
+        transition: transform 0.5s ease;
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+
+    header .navbar #nav:not(:checked)~.wrapper {
+        /* Agrega estilos de animación cuando #nav deja de estar marcado */
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    header .navbar #nav:not(:checked)~.wrapper .nav-item a {
+        /* Agrega estilos de animación cuando #nav deja de estar marcado */
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+}

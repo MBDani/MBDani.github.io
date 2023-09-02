@@ -1,0 +1,110 @@
+.scroll-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* PRESENTATION */
+#presentation {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+#presentation h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#presentation p {
+    font-size: 1.5rem;
+}
+
+/* ABOUT */
+#about {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 1.25rem;
+}
+
+/* PROJECTS */
+#projects {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card {
+    border: none;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Experience */
+#experience {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+#experience h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* CONTACT */
+
+#contact {
+    background-color: #f8f9fa;
+    color: #343a40;
+    /* background-color: #343a40;
+    color: #f8f9fa; */
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-size: 1.25rem;
+}
+
+.form-control {
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.btn-primary {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.5rem;
+}
