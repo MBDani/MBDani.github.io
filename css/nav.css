@@ -49,13 +49,13 @@
 }
 
 .navbar-section-light {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa75;
     color: #343a40;
     transition: background-color 0.3s ease;
 }
 
 .navbar-section-black {
-    background-color: #343a40;
+    background-color: #343a4093;
     color: #f8f9fa;
     transition: background-color 0.3s ease;
 }
@@ -197,13 +197,13 @@
     header .navbar #nav:not(:checked)~.wrapper {
         /* Agrega estilos de animación cuando #nav deja de estar marcado */
         z-index: -1;
-        opacity: 0;
+        display: none;
         transition: all 0.5s ease;
     }
 
     header .navbar #nav:not(:checked)~.wrapper .nav-item a {
         /* Agrega estilos de animación cuando #nav deja de estar marcado */
-        opacity: 0;
+        display: none;
         transform: translateX(-20px);
         transition: all 0.3s ease-in-out;
     }
