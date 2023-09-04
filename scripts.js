@@ -59,7 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function sendMail() {
+function sendMail(event) {
+  /* Animated button submit */
+  var wrapper = document.getElementById("contact-button-wrapper");
+  if (!wrapper.classList.contains("checked")) {
+    wrapper.classList.add("checked");
+   
+  }
+
+  /* Send email */
+  event.preventDefault(); // Detiene el comportamiento predeterminado del formulario
   var params = {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
@@ -72,11 +81,14 @@ function sendMail() {
   emailjs
     .send(serviceID, templateID, params)
     .then((res) => {
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("message").value = "";
-      console.log(res);
-      alert("your message sent sucessfully");
+      setTimeout(function () {
+        wrapper.classList.remove("checked");
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        console.log(res);
+        alert("your message sent sucessfully");
+      }, 5000);
     })
     .catch((err) => console.log(err));
 }

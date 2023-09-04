@@ -7,15 +7,17 @@
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/timeline.css">
     <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/submit.css">
 </head>
 
 <body>
 
     <header>
-        <nav class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg">
+        <nav class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
             <a href="#home" class="navbar-brand">DMB</a>
             <input type="checkbox" id="nav" class="d-none">
             <label for="nav" class="nav-toggle">
@@ -23,7 +25,7 @@
                 <span></span>
                 <span></span>
             </label>
-            <div class="wrapper">
+            <div class="wrapper ml-auto">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#about" onclick="nav">About</a>
@@ -42,14 +44,20 @@
         </nav>
     </header>
 
-    <section id="home" class="d-flex align-items-center vh-100 text-center ">
+    <section id="home" class="d-flex align-items-center vh-100 text-center rellax" data-rellax-speed="-2">
         <div class="container">
             <h1 class="display-4">Daniel Merino Benito</h1>
             <p class="lead">FullStack Developer</p>
+
+            <div class="scroll-downs">
+                <div class="mousey">
+                    <div class="scroller"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="d-flex align-items-center vh-100 text-center ">
+    <section id="about" class="d-flex align-items-center vh-100 text-center rellax" data-rellax-speed="-2">
         <div class="container">
             <h2 class="text-center">About me</h2>
             <p>+2 years of experience as a Software Developer, during which I have had the opportunity to work on
@@ -63,7 +71,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/merino-chess2.png" class="card-img-top" alt="Project 1">
+                        <img src="./assets/projects/merino-chess2.png" class="card-img-top" alt="Project 1">
                         <div class="card-body">
                             <h5 class="card-title">Merino Chess</h5>
                             <p class="card-text">Merino Chess</p>
@@ -72,7 +80,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/controlClientes.png" class="card-img-top" alt="Project 2">
+                        <img src="./assets/projects/controlClientes.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Control de Clientes</h5>
                         </div>
@@ -80,7 +88,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/captchaGame.png" class="card-img-top" alt="Project 2">
+                        <img src="./assets/projects/captchaGame.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Captcha Game</h5>
                         </div>
@@ -89,7 +97,7 @@
 
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/tictactoe.png" class="card-img-top" alt="Project 2">
+                        <img src="./assets/projects/tictactoe.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Tic-Tac-Toe</h5>
                         </div>
@@ -97,7 +105,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/duckHunt.png" class="card-img-top" alt="Project 2">
+                        <img src="./assets/projects/duckHunt.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">DuckHunt</h5>
                         </div>
@@ -105,7 +113,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="./assets/jump.png" class="card-img-top" alt="Project 2">
+                        <img src="./assets/projects/jump.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Jump Don't Die</h5>
                         </div>
@@ -177,12 +185,12 @@
 
     </section>
 
-    <section id="contact" class="d-flex align-items-center vh-100 text-center">
+    <section id="contact" class="d-flex align-items-center vh-100 text-center pn5 mb-5">
         <div class="container">
             <h2 class="text-center">Contacto</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <form onsubmit="sendMail()">
+                    <form id="form" onsubmit="sendMail(event)">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="name" required>
@@ -195,17 +203,72 @@
                             <label for="message" class="form-label">Mensaje</label>
                             <textarea class="form-control" id="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+
+                        <div id="contact-button-wrapper">
+                            <button class="button-submit contact-submit" type="submit">Submit</button>
+                            <div class="contact-loader-wrapper">
+                                <span class="contact-loader yellow"></span>
+                                <span class="contact-loader pink"></span>
+                            </div>
+                            <span class="contact-loader orange"></span>
+
+                            <div class="check-wrapper">
+                                <svg version="1.1" width="65px" height="38px" viewBox="0 0 64.5 37.4">
+                                    <polyline class="check" points="5,13 21.8,32.4 59.5,5 " />
+                                </svg>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="mailto:dani.mb999@gmail.com">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="./assets/CV_english.pdf" download>
+                    <i class="far fa-file-pdf"></i>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://www.linkedin.com/in/merino-benito/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </li>
+            <li class="social-icon__item">
+                <a class="social-icon__link" href="https://github.com/MBDani" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#home">Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
+            <li class="menu__item"><a class="menu__link" href="#projects">Projects</a></li>
+            <li class="menu__item"><a class="menu__link" href="#experience">Experience</a></li>
+            <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
+        </ul>
+    </footer>
+
 </body>
 
 <script src="https://kit.fontawesome.com/76a0244cdf.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
 <script src="./scripts.js"></script>
 
 <!-- email -->
