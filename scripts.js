@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function highlightNav() {
     var sections = document.querySelectorAll("section");
     sections.forEach(function (section) {
-      var position = section.offsetTop;
+      var position = section.offsetTop * 0.9;
       var sectionHeight = section.offsetHeight;
       var scroll = window.scrollY;
 
@@ -25,21 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
-
-    /* Creamos bg en el navbar cuando hacemos scroll */
-    const nav = document.querySelector(".navbar");
-    const sectionDark = ["about", "experience"];
-    const sectionLigth = ["projects", "contact"];
-    if (sectionId == "home") {
-      nav.classList.remove("navbar-section-black");
-      nav.classList.remove("navbar-section-light");
-    } else if (sectionLigth.includes(sectionId)) {
-      nav.classList.add("navbar-section-black");
-      nav.classList.remove("navbar-section-light");
-    } else if (sectionDark.includes(sectionId)) {
-      nav.classList.remove("navbar-section-black");
-      nav.classList.add("navbar-section-light");
-    }
   }
 
   // Llama a la función inicialmente y en el evento de desplazamiento
@@ -57,6 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", () => {
     highlightNav();
   });
+
+  const toggle = document.querySelector("#toggle");
+  const root = document.documentElement;
+  toggle.addEventListener("change", (event) => {
+    if (event) {
+      root.style.setProperty("--background-color", "blue");
+      root.style.setProperty("--highlight", "red");
+      root.style.setProperty("--text-color", "black");
+    }
+  });
 });
 
 function sendMail(event) {
@@ -64,7 +59,6 @@ function sendMail(event) {
   var wrapper = document.getElementById("contact-button-wrapper");
   if (!wrapper.classList.contains("checked")) {
     wrapper.classList.add("checked");
-   
   }
 
   /* Send email */

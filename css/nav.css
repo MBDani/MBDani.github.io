@@ -1,7 +1,7 @@
 .nav-link,
 .navbar-brand {
     position: relative;
-    color: #000000;
+    color: var(--text-color);
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 25px;
@@ -9,11 +9,12 @@
     text-decoration: none;
     margin-left: 1rem;
     transition: all 0.5s ease;
+    animation: fadeInUp 1s ease;
 }
 
 .nav-link:hover,
 .navbar-brand:hover {
-    color: rgb(168, 239, 255, 0.9);
+    color: var(--highlight);
 }
 
 .nav-link::after,
@@ -25,7 +26,7 @@
     width: 0;
     height: 0.15rem;
     transform: translateX(-50%);
-    background-color: rgb(168, 239, 255, 0.9);
+    background-color: var(--highlight);
     transition: all 0.5s ease;
 }
 
@@ -36,7 +37,7 @@
 
 /* Animación navbar para cuando hacemos scroll */
 .navbar-scroll-black {
-    background-color: #343a40;
+    background-color: var(--text-color);
     transition: background-color 0.3s ease;
     /* Transición suave del color de fondo */
     /* Otros estilos según tus necesidades */
@@ -45,19 +46,7 @@
 
 /* Esta es la clase que usamos para saber en que sección nos encontramos */
 .section-active {
-    color: rgb(168, 239, 255, 0.9);
-}
-
-.navbar-section-light {
-    background-color: #f8f9fa75;
-    color: #343a40;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-section-black {
-    background-color: #343a4093;
-    color: #f8f9fa;
-    transition: background-color 0.3s ease;
+    color: var(--highlight);
 }
 
 @media only screen and (max-width: 990px) {
@@ -74,7 +63,8 @@
         height: 100%;
         z-index: -1;
         opacity: 0;
-        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        background: var(--background-color);
+        background-size: 300% 300%;
         transition: all 0.5s ease;
     }
 
@@ -116,7 +106,7 @@
     header .navbar .wrapper .nav-item a {
         padding: 1rem 2rem;
         opacity: 0;
-        color: #fff;
+        color: var(--text-color);
         font-size: 1rem;
         font-weight: 600;
         transform: translateX(-20px);
@@ -138,7 +128,7 @@
         display: block;
         width: 20px;
         height: 2px;
-        background: #000000;
+        background: var(--text-color);
         border-radius: 2px;
         margin-left: 14px;
     }
@@ -161,7 +151,7 @@
     }
 
     header .navbar #nav:checked+.nav-toggle span {
-        background: #fff;
+        background: var(--text-color);
         transition: transform 0.5s ease;
     }
 
@@ -209,3 +199,7 @@
     }
 
 }
+
+
+
+

@@ -8,14 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/timeline.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/submit.css">
+    <link rel="stylesheet" href="./css/projects.css">
+    <link rel="stylesheet" href="./css/presentation.css">
 </head>
 
 <body>
-
+    <!-- 
+    -PROJECTS: arreglar esa chapuza, añadir hover con botón para ir a verlo a github y un botón de mostrar más proyectos que lleve a github
+    -TENEMOS QUE ARREGLAR EL NAV PARA QUE SE VEA BIEN EL SUBRAYADO DEL HOVER
+    - AÑADIR ICONOS GITHUB, LINKEDIN Y CORREO. ADEMÁS PODRÍA SER INTERESANTE REMARCAR DE ALGUNA FORMA EL BOTÓN CONTACT
+ -->
     <header>
         <nav class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
             <a href="#home" class="navbar-brand">DMB</a>
@@ -44,81 +51,189 @@
         </nav>
     </header>
 
-    <section id="home" class="d-flex align-items-center vh-100 text-center rellax" data-rellax-speed="-2">
+    <section id="home" class="d-flex align-items-center vh-100 text-center">
         <div class="container">
-            <h1 class="display-4">Daniel Merino Benito</h1>
-            <p class="lead">FullStack Developer</p>
-
-            <div class="scroll-downs">
+            <h1>
+                <span class="word">Daniel<span class="superscript">MB</span> </span>
+                <span class="word subtitle">Full-Stack</span>
+              </h1>
+            <div class="pt-4">
+                <p class="social-icons">
+                    <a href="#" class="social-icon p-2">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon p-2">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </p>
+            </div>
+            <a class="scroll-downs pt-4" href="#about">
                 <div class="mousey">
                     <div class="scroller"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- MIRAR QUE HACEMOS CON ESTO -->
+    <!-- <div class="waves">
+        <div class="wave-reverse" id="wave1"></div>
+        <div class="wave-reverse" id="wave2"></div>
+        <div class="wave-reverse" id="wave3"></div>
+        <div class="wave-reverse" id="wave4"></div>
+    </div> -->
+    <section id="about" class="d-flex align-items-center text-center vh-100">
+        <div class="container">
+            <h2 class="text-center">About me</h2>
+            <p>+2 years of experience as a Software Developer, during which I have had the opportunity to work on
+                challenging projects that have improved my skills in both backend and frontend development.</p>
+
+            <div class="row">
+                <div class="col-md-6 mb-6 fa-lg p-2">
+                    <a href="#contact" class="btn btn-primary w-100 ">
+                        <i class="fas fa-arrow-down"></i> Get in touch
+                    </a>
+                </div>
+                <div class="col-md-6 mb-6 fa-lg p-2">
+                    <a class="btn btn-primary w-100" href="./assets/CV_english.pdf" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="d-flex align-items-center vh-100 text-center rellax" data-rellax-speed="-2">
+    <section id="projects" class="min-vh-100">
         <div class="container">
-            <h2 class="text-center">About me</h2>
-            <p>+2 years of experience as a Software Developer, during which I have had the opportunity to work on
-                challenging projects that have improved my skills in both backend and frontend development.</p>
-        </div>
-    </section>
+            <h2 class="text-center mb-4 pb-4">Projects</h2>
+            <div class="row mt-5">
+                <div class="preview-card">
+                    <div class="preview-card__wrp">
+                        <span class="preview-card__code icon-prev">
+                            <i class='bx bxl-angular angular-icon' tooltip="angular"></i>
+                            <i class='bx bxl-typescript typescript-icon'></i>
+                            <i class='bx bxl-html5 html-icon'></i>
+                            <i class='bx bxl-css3 css-icon'></i>
+                            <i class='bx bxl-firebase firebase-icon'></i>
+                        </span>
+                        <div class="preview-card__item">
+                            <div class="preview-card__img">
+                                <img src="./assets/projects/merino-chess.png" alt="">
+                            </div>
+                            <div class="preview-card__content">
+                                <span class="preview-card__code icon-post">
+                                    <i class='bx bxl-angular angular-icon'></i>
+                                    <i class='bx bxl-typescript typescript-icon'></i>
+                                    <i class='bx bxl-html5 html-icon'></i>
+                                    <i class='bx bxl-css3 css-icon'></i>
+                                    <i class='bx bxl-firebase firebase-icon'></i>
+                                </span>
+                                <div class="preview-card__title">MERINO CHESS</div>
+                                <div class="preview-card__text">
+                                    <p>Play chess solo or with friends, customize your pieces, and compete
+                                        online to reach the top of the leaderboard. Show that you're a chess
+                                        master!</p>
+                                </div>
+                                <a href="https://github.com/MBDani/Merino-Chess" target="_blank"
+                                    class="preview-card__button"> CODE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-card preview-card-pair">
+                    <div class="preview-card__wrp">
+                        <span class="preview-card__code icon-prev">
+                            <i class='bx bxl-android android-icon'></i>
+                            <i class='bx bxl-java java-icon'></i>
+                            <i class='bx bxl-firebase firebase-icon'></i>
+                        </span>
+                        <div class="preview-card__item ">
+                            <div class="preview-card__img">
+                                <img src="./assets/projects/duckHunt.png" alt="">
+                            </div>
+                            <div class="preview-card__content">
+                                <span class="preview-card__code icon-post">
+                                    <i class='bx bxl-angular angular-icon'></i>
+                                    <i class='bx bxl-typescript typescript-icon'></i>
+                                    <i class='bx bxl-html5 html-icon'></i>
+                                    <i class='bx bxl-css3 css-icon'></i>
+                                    <i class='bx bxl-firebase firebase-icon'></i>
+                                </span>
 
-    <section id="projects" class="d-flex align-items-center min-vh-100 text-center">
-        <div class="container flex-wrap justify-content-center">
-            <h2 class="text-center">Projects</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/merino-chess2.png" class="card-img-top" alt="Project 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Merino Chess</h5>
-                            <p class="card-text">Merino Chess</p>
+                                <div class="preview-card__title">DUCK HUNT</div>
+                                <div class="preview-card__text">Embark on a feathered adventure in our Duck Hunt game!
+                                    Take aim, shoot, and climb the leaderboard to become the ultimate duck hunter.
+                                    Compete against friends and players worldwide to prove your skills. Get ready for a
+                                    quacking good time!</div>
+                                <a href="https://github.com/MBDani/Duck-Hunt-Android-Studio" target="_blank"
+                                    class="preview-card__button">CODE</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/controlClientes.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Control de Clientes</h5>
+                <div class="preview-card">
+                    <div class="preview-card__wrp">
+                        <span class="preview-card__code icon-prev">
+                            <i class='bx bxl-angular angular-icon'></i>
+                            <i class='bx bxl-typescript typescript-icon'></i>
+                            <i class='bx bxl-html5 html-icon'></i>
+                            <i class='bx bxl-css3 css-icon'></i>
+                            <i class='bx bxl-firebase firebase-icon'></i>
+                        </span>
+                        <div class="preview-card__item">
+                            <div class="preview-card__img">
+                                <img src="./assets/projects/captchaGame.png" alt="">
+                            </div>
+                            <div class="preview-card__content">
+                                <span class="preview-card__code icon-post">
+                                    <i class='bx bxl-angular angular-icon'></i>
+                                    <i class='bx bxl-typescript typescript-icon'></i>
+                                    <i class='bx bxl-html5 html-icon'></i>
+                                    <i class='bx bxl-css3 css-icon'></i>
+                                </span>
+                                <div class="preview-card__title">CAPTCHA GAME</div>
+                                <div class="preview-card__text">Ready to put your visual skills to the test?
+                                    Captcha-Game challenges you to distinguish between the right and wrong images based
+                                    on the two words you choose. Play now and push your visual acuity like never before!
+                                </div>
+                                <a href="https://github.com/MBDani/Captcha-Game" target="_blank"
+                                    class="preview-card__button"> CODE</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/captchaGame.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Captcha Game</h5>
-                        </div>
-                    </div>
-                </div>
+                <div class="preview-card preview-card-pair">
+                    <div class="preview-card__wrp">
+                        <span class="preview-card__code icon-prev">
+                            <i class='bx bxl-android android-icon'></i>
+                            <i class='bx bxl-java java-icon'></i>
+                            <i class='bx bxl-firebase firebase-icon'></i>
+                        </span>
+                        <div class="preview-card__item ">
+                            <div class="preview-card__img">
+                                <img src="./assets/projects/tictactoe.png" alt="">
+                            </div>
+                            <div class="preview-card__content">
+                                <span class="preview-card__code icon-post">
+                                    <i class='bx bxl-angular angular-icon'></i>
+                                    <i class='bx bxl-typescript typescript-icon'></i>
+                                    <i class='bx bxl-html5 html-icon'></i>
+                                    <i class='bx bxl-css3 css-icon'></i>
+                                    <i class='bx bxl-firebase firebase-icon'></i>
+                                </span>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/tictactoe.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Tic-Tac-Toe</h5>
+                                <div class="preview-card__title">TIC TAC TOE</div>
+                                <div class="preview-card__text">Enjoy the classic Tic Tac Toe game on your Android
+                                    device! Challenge players from around the world in thrilling online matches. Compete
+                                    for the top spot in the rankings and showcase your skills in the game!</div>
+                                <a href="https://github.com/MBDani/TicTacToe-Android-Studio" target="_blank"
+                                    class="preview-card__button">CODE</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/duckHunt.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">DuckHunt</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./assets/projects/jump.png" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Jump Don't Die</h5>
-                        </div>
-                    </div>
-                </div>
+                <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="btn btn-primary">SEE MORE
+                    PROJECTS <i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
@@ -155,7 +270,7 @@
                         <div class="cbp_tmlabel">
                             <h3 class="text-center p-4">FullStack Developer</h3>
                             <div class="date">
-                                <i class="fa fa-calendar"></i>December 2021 - Current
+                                <i class="fa fa-calendar"></i>July 2021 - October 2021
                             </div>
                             <p class="projectParagraph">Development and maintenance of an ERP (Enterprise resource
                                 planning).</p>
@@ -172,7 +287,7 @@
                         <div class="cbp_tmlabel">
                             <h3 class="text-center p-4">Forensic IT Specialist</h3>
                             <div class="date">
-                                <i class="fa fa-calendar"></i>December 2021 - Current
+                                <i class="fa fa-calendar"></i>April 2021 - June 2021
                             </div>
                             <p class="projectParagraph">Development of an evidence inventory tool from scratch.</p>
                             <footer class="mt-2 projectParagraph"> <strong>Technologies: </strong> Java, Swing, MySQL
@@ -182,30 +297,29 @@
                 </ul>
             </div>
         </div>
-
     </section>
 
-    <section id="contact" class="d-flex align-items-center vh-100 text-center pn5 mb-5">
+    <section id="contact" class="d-flex align-items-center vh-100 text-center mb-5">
         <div class="container">
-            <h2 class="text-center">Contacto</h2>
+            <h2 class="text-center">Contact</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <form id="form" onsubmit="sendMail(event)">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nombre</label>
+                            <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="message" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5"></textarea>
                         </div>
 
                         <div id="contact-button-wrapper">
-                            <button class="button-submit contact-submit" type="submit">Submit</button>
+                            <button class="button-submit contact-submit" type="submit">SUBMIT</button>
                             <div class="contact-loader-wrapper">
                                 <span class="contact-loader yellow"></span>
                                 <span class="contact-loader pink"></span>
@@ -269,7 +383,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<!-- <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script> -->
 <script src="./scripts.js"></script>
+<script src="./presentation.js"></script>
 
 <!-- email -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
