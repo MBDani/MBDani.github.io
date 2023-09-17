@@ -108,7 +108,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* display: block; */
     opacity: 1;
     border-radius: 20px;
     transition: all 0.3s;
@@ -169,6 +168,7 @@
 
 .preview-card__button {
     display: inline-flex;
+    font-family: var(--font1);
     background-image: linear-gradient(147deg, #000 0%, #000 74%);
     padding: 15px 35px;
     margin-bottom: 30px;
@@ -180,13 +180,14 @@
     justify-content: center;
     text-align: center;
     letter-spacing: 1px;
+    transition: all 0.4s ease-out;
 }
 
 .preview-card__button:hover {
-    color: #989898;
-    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0px 3px 10px var(--highlight), inset 0 100px 0 0 var(--highlight);
 }
-
 
 @media screen and (min-width: 768px) {
     .preview-card-pair .preview-card__item {
@@ -249,6 +250,7 @@
     #projects .row {
         margin-top: 80px;
     }
+
     .preview-card {
         min-height: 500px;
         height: auto;
@@ -303,7 +305,7 @@
     .preview-card {
         margin: 60px auto;
     }
-    
+
     .preview-card__button {
         width: 100%;
     }
