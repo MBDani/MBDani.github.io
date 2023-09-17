@@ -146,6 +146,25 @@
   transform: scale(0);
 }
 
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 11rem;
+  }
+
+  #home .subtitle {
+    padding: 0;
+    /* padding-top: 20px; */
+    font-size: 9rem;
+  }
+
+  /* sparkle */
+  .superscript::after {
+    /* --size: 5.5rem; */
+    left: -91%;
+    top: 13%
+  }
+}
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 7rem;

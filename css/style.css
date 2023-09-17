@@ -16,6 +16,11 @@
 
 /* scroll-snap-align: start; */
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Inhabilita el scroll horizontal */
+}
+
 body {
   /* background: radial-gradient(ellipse at bottom, var(--color1) 0%, var(--color3) 50%, var(--color3) 100%); */
   /* background: linear-gradient(-45deg, var(--background-color1), var(--background-color2), var(--background-color3)); */
@@ -471,5 +476,18 @@ form {
   to {
       opacity: 1;
       transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
