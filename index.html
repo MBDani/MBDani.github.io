@@ -24,7 +24,7 @@
     - AÑADIR ICONOS GITHUB, LINKEDIN Y CORREO. ADEMÁS PODRÍA SER INTERESANTE REMARCAR DE ALGUNA FORMA EL BOTÓN CONTACT
  -->
     <header>
-        <nav class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
+        <nav id="navbar" class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
             <a href="#home" class="navbar-brand">DMB</a>
             <input type="checkbox" id="nav" class="d-none">
             <label for="nav" class="nav-toggle">
@@ -59,10 +59,10 @@
               </h1>
             <div class="pt-4">
                 <p class="social-icons">
-                    <a href="https://github.com/MBDani?tab=repositories" class="social-icon p-2">
+                    <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="social-icon p-2">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/merino-benito/" class="social-icon p-2">
+                    <a href="https://www.linkedin.com/in/merino-benito/" target="_blank" class="social-icon p-2">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </p>
@@ -91,12 +91,12 @@
             <div class="row">
                 <div class="col-md-6 mb-6 fa-lg p-2">
                     <a href="#contact" class="preview-card__button w-100 ">
-                        <i class="fas fa-arrow-down"></i> Get in touch
+                        <i class="fas fa-arrow-down m-2"></i> Get in touch
                     </a>
                 </div>
                 <div class="col-md-6 mb-6 fa-lg p-2">
                     <a class="preview-card__button w-100" href="./assets/CV_english.pdf" download>
-                        <i class="fas fa-download"></i> Download Resume
+                        <i class="fas fa-download m-2"></i> Download Resume
                     </a>
                 </div>
             </div>
@@ -105,8 +105,8 @@
 
     <section id="projects" class="min-vh-100">
         <div class="container">
-            <h2 class="text-center mb-4 pb-4">Projects</h2>
-            <div class="row mt-5">
+            <h2 class="text-center ">Projects</h2>
+            <div class="row ">
                 <div class="preview-card">
                     <div class="preview-card__wrp">
                         <span class="preview-card__code icon-prev">
@@ -232,8 +232,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="btn btn-primary">SEE MORE
-                    PROJECTS <i class="fab fa-github"></i></a>
+                <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="preview-card__button card__button_all_projects">SEE MORE
+                    PROJECTS <i class="fab fa-github m-2"></i></a>
             </div>
         </div>
     </section>
@@ -384,7 +384,6 @@
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<!-- <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script> -->
 <script src="./scripts.js"></script>
 <script src="./presentation.js"></script>
 

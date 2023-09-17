@@ -146,6 +146,13 @@
   transform: scale(0);
 }
 
+#home .social-icons {
+  opacity: 0;
+}
+#home .scroll-downs {
+  opacity: 0;
+}
+
 @media screen and (min-width: 1000px) {
   h1 {
     font-size: 11rem;

@@ -35,7 +35,7 @@
     top: 3%;
     bottom: 0;
     width: 10px;
-    background: var(--color2);
+    background: var(--background-color2);
     left: 13%;
     height: 100%;
 }
@@ -72,7 +72,7 @@
 
 .cbp_tmtimeline>li .cbp_tmlabel {
     margin: 0 0 15px 25%;
-    background: var(--color2);
+    background: var(--background-color2);
     color: #FFF;
     padding: 30px;
     font-size: 1.2em;
@@ -85,7 +85,7 @@
 }
 
 .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
-    background: var(--color2);
+    background: var(--background-color2);
 }
 
 .cbp_tmtimeline>li .cbp_tmlabel h3 {
@@ -126,13 +126,13 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-right-color: var(--color2);
+    border-right-color: var(--background-color2);
     border-width: 10px;
     top: 70px;
 }
 
 .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
-    border-right-color: var(--color2);
+    border-right-color: var(--background-color2);
 }
 
 .cbp_tmtimeline>li .cbp_tmicon {
@@ -175,7 +175,7 @@
     background-color: #fff;
     border-radius: 100px;
     border-style: solid;
-    border-color: var(--color2);
+    border-color: var(--background-color2);
     background-size: cover;
 }
 
@@ -223,13 +223,13 @@
     .cbp_tmtimeline>li .cbp_tmlabel:after {
         right: auto;
         border-right-color: transparent;
-        border-bottom-color: var(--color2);
+        border-bottom-color: var(--background-color2);
         top: -20px;
     }
 
     .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
         border-right-color: transparent;
-        border-bottom-color: var(--color2);
+        border-bottom-color: var(--background-color2);
         left: 65px;
     }
 

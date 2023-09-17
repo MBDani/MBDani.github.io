@@ -1,8 +1,13 @@
 :root {
 
-  --background-color: #080808;
+  --background-color: #0f0f0f;
   --highlight: gold;
   --text-color: white;
+  --background-color2: #000000;
+  
+  /* Colors button submmit */
+  /* --highlight: #ff4272; */
+  /* --highlight: #ffb369; */
 }
 
 /* html {
@@ -215,6 +220,10 @@ h1 {
 
 #about a {
   height: 3rem;
+}
+
+.fa-download:hover{
+  transform: translateY(20px);
 }
 
 /* PROJECTS */
@@ -477,10 +486,6 @@ form {
       opacity: 1;
       transform: translateY(0);
   }
-}
-
-.fade-in {
-  animation: fadeIn 1s forwards;
 }
 
 @keyframes fadeIn {

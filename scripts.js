@@ -43,13 +43,29 @@ document.addEventListener("DOMContentLoaded", function () {
     highlightNav();
   });
 
-  const toggle = document.querySelector("#toggle");
-  const root = document.documentElement;
-  toggle.addEventListener("change", (event) => {
-    if (event) {
-      root.style.setProperty("--background-color", "blue");
-      root.style.setProperty("--highlight", "red");
-      root.style.setProperty("--text-color", "black");
+  /* Dark mode - Ligth mode */
+  // const toggle = document.querySelector("#toggle");
+  // const root = document.documentElement;
+  // toggle.addEventListener("change", (event) => {
+  //   if (event) {
+  //     root.style.setProperty("--background-color", "blue");
+  //     root.style.setProperty("--highlight", "red");
+  //     root.style.setProperty("--text-color", "black");
+  //   }
+  // });
+
+  /* Started Animations */
+  var startAnimation = document.getElementById("start-animation");
+  var navbar = document.getElementById("navbar");
+  var socialIcons = document.getElementsByClassName("social-icons");
+  var scrollDowns = document.getElementsByClassName("scroll-downs");
+  startAnimation.addEventListener("animationend", function () {
+    navbar.classList.add("fade-in");
+    for (let i = 0; i < socialIcons.length; i++) {
+      socialIcons[i].classList.add("fade-in");
+    }
+    for (let i = 0; i < scrollDowns.length; i++) {
+      scrollDowns[i].classList.add("fade-in");
     }
   });
 });

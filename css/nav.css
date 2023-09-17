@@ -1,3 +1,11 @@
+#navbar {
+    opacity: 0;
+}
+
+.fade-in {
+    animation: fadeIn 1s forwards;
+  }  
+
 .nav-link,
 .navbar-brand {
     position: relative;
@@ -9,7 +17,6 @@
     text-decoration: none;
     margin-left: 1rem;
     transition: all 0.5s ease;
-    animation: fadeInUp 1s ease;
 }
 
 .nav-link:hover,
@@ -39,8 +46,6 @@
 .navbar-scroll-black {
     background-color: var(--text-color);
     transition: background-color 0.3s ease;
-    /* Transición suave del color de fondo */
-    /* Otros estilos según tus necesidades */
 }
 
 
@@ -49,7 +54,7 @@
     color: var(--highlight);
 }
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 991px) {
     header .navbar {
         padding: 1rem 2rem;
         margin: 0 auto;
@@ -199,7 +204,3 @@
     }
 
 }
-
-
-
-
