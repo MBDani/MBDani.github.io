@@ -1,15 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 
 :root {
 
+  /* Light */
+  /* --background-color: #e7e7e7;
+  --highlight: gold;
+  --text-color: black;
+  --background-color2: #ffffff; */
+  
+  /* Dark */
   --background-color: #0f0f0f;
   --highlight: gold;
   --text-color: white;
   --background-color2: #000000;
 
   
-  --font1: "Playfair Display", Vidaloka, serif;
-  --font2: ;
+  --font1: "Playfair Display", "Vidaloka", serif;
+  --font2:  "Roboto", "Open Sans";
   
   /* Colors button submmit */
   /* --highlight: #ff4272; */
@@ -30,6 +40,8 @@
 html, body {
   width: 100%;
   overflow-x: hidden; /* Inhabilita el scroll horizontal */
+  font-family: var(--font2);
+  font-weight: 400;
 }
 
 body {
@@ -37,6 +49,10 @@ body {
   /* background: linear-gradient(-45deg, var(--background-color1), var(--background-color2), var(--background-color3)); */
   background-color: var(--background-color);
   /* background-size: 300% 300%; */
+}
+
+.highlight {
+  color: var(--highlight);
 }
 
 
@@ -127,7 +143,7 @@ h1 {
   perspective: 500px;
 }
 
-h2 {
+h2, h3 {
   font-family: var(--font1);
 }
 
@@ -326,7 +342,7 @@ form {
 
 .social-icon__link {
   font-size: 2rem;
-  color: var(--text-color);
+  color: #fff;
   margin: 0 10px;
   display: inline-block;
   transition: 0.5s;
@@ -334,7 +350,7 @@ form {
 
 .menu__link {
   font-size: 1.2rem;
-  color: var(--text-color);
+  color: #fff;
   margin: 0 10px;
   display: inline-block;
   transition: 0.5s;
@@ -348,7 +364,7 @@ form {
 }
 
 .footer p {
-  color: var(--text-color);
+  color: #fff;
   margin: 15px 0 10px 0;
   font-size: 1rem;
   font-weight: 300;

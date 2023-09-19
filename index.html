@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>DMB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./css/presentation.css">
 </head>
 
-<body>
+<body class="dark-theme">
     <!-- 
        Bugs tablet:
             -Cuando pulsamos los links del nav no se quitan automáticamente
@@ -25,12 +25,25 @@
             
         -Las olas de abajo que hacemos con ella?
         -El botón de submit no pega con los colores que estámos añadiendo
-        -Cambiar la fuente
-        -Cambiar modo oscuro y claro
  -->
+
     <header>
-        <nav id="navbar" class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
-            <a href="#home" class="navbar-brand">DMB</a>
+        <nav id="navbar"
+            class="px-3 p-3 fixed-top navbar-transparent navbar navbar-expand-lg justify-content-sm-between">
+            <div class="mt-2">
+                <a href="#home" class="navbar-brand">D|M|B</a>
+                <button id="switch-theme">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 472.39 472.39">
+                        <g class="toggle-sun">
+                            <path
+                                d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" />
+                        </g>
+                        <g class="toggle-circle">
+                            <circle class="cls-1" cx="236.2" cy="236.2" r="103.78" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
             <input type="checkbox" id="nav" class="d-none">
             <label for="nav" class="nav-toggle">
                 <span></span>
@@ -56,12 +69,14 @@
         </nav>
     </header>
 
+
+
     <section id="home" class="d-flex align-items-center vh-100 text-center">
         <div class="container">
             <h1>
                 <span class="word">Daniel<span id="start-animation" class="superscript">MB</span> </span>
                 <span class="word subtitle">Full-Stack</span>
-              </h1>
+            </h1>
             <div class="pt-4">
                 <p class="social-icons">
                     <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="social-icon p-2">
@@ -237,7 +252,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://github.com/MBDani?tab=repositories" target="_blank" class="preview-card__button card__button_all_projects">SEE MORE
+                <a href="https://github.com/MBDani?tab=repositories" target="_blank"
+                    class="preview-card__button card__button_all_projects">SEE MORE
                     PROJECTS <i class="fab fa-github m-2"></i></a>
             </div>
         </div>
@@ -257,8 +273,8 @@
                             <div class="date">
                                 <i class="fa fa-calendar"></i>December 2021 - Current
                             </div>
-                            <p class="projectParagraph">Final client Movistar <br>
-                                Project GTER - Gestión de Terceros (Third Party Management)
+                            <p class="projectParagraph">Final client Movistar. <br>
+                                Project GTER - Gestión de Terceros (Third Party Management).
                             </p>
                             <p class="projectParagraph">Actively participating in the creation and maintenance of
                                 applications and systems, both on the frontend and backend.</p>
@@ -388,7 +404,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script src="./scripts.js"></script>
 <script src="./presentation.js"></script>
 

@@ -44,15 +44,34 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Dark mode - Ligth mode */
-  // const toggle = document.querySelector("#toggle");
-  // const root = document.documentElement;
-  // toggle.addEventListener("change", (event) => {
-  //   if (event) {
-  //     root.style.setProperty("--background-color", "blue");
-  //     root.style.setProperty("--highlight", "red");
-  //     root.style.setProperty("--text-color", "black");
-  //   }
-  // });
+  const themeToggle = document.querySelector("#switch-theme");
+  const root = document.documentElement;
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.contains("light-theme")
+      ? enableDarkMode()
+      : enableLightMode();
+  });
+
+  function enableDarkMode() {
+    document.body.classList.remove("light-theme");
+    document.body.classList.add("dark-theme");
+
+    root.style.setProperty("--background-color", "#0f0f0f");
+    root.style.setProperty("--highlight", "gold");
+    root.style.setProperty("--text-color", "white");
+    root.style.setProperty("--background-color2", "#000000");
+  }
+
+  function enableLightMode() {
+    document.body.classList.remove("dark-theme");
+    document.body.classList.add("light-theme");
+
+    root.style.setProperty("--background-color", "#f5f5f5");
+    root.style.setProperty("--highlight", "gold");
+    root.style.setProperty("--text-color", "black");
+    root.style.setProperty("--background-color2", "#ffffff");
+  }
 
   /* Started Animations */
   var startAnimation = document.getElementById("start-animation");

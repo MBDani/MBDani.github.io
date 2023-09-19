@@ -158,7 +158,7 @@
     text-align: center;
     font-size: 24px;
     font-weight: 700;
-    color: var(--text-color);
+    color: var(--highlight);
 }
 
 .preview-card__text {
