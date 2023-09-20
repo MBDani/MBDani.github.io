@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* Dark mode - Ligth mode */
   const themeToggle = document.querySelector("#switch-theme");
   const root = document.documentElement;
+  var wave = document.getElementsByClassName("wave");
 
   themeToggle.addEventListener("click", () => {
     document.body.classList.contains("light-theme")
@@ -61,16 +62,25 @@ document.addEventListener("DOMContentLoaded", function () {
     root.style.setProperty("--highlight", "gold");
     root.style.setProperty("--text-color", "white");
     root.style.setProperty("--background-color2", "#000000");
+
+    for (let i = 0; i < wave.length; i++) {
+      wave[i].style.filter = 'brightness(0%)';
+    }
   }
 
   function enableLightMode() {
     document.body.classList.remove("dark-theme");
     document.body.classList.add("light-theme");
 
-    root.style.setProperty("--background-color", "#f5f5f5");
+    root.style.setProperty("--background-color", "#f0f0f0");
     root.style.setProperty("--highlight", "gold");
     root.style.setProperty("--text-color", "black");
     root.style.setProperty("--background-color2", "#ffffff");
+
+    for (let i = 0; i < wave.length; i++) {
+      wave[i].style.filter = 'brightness(0%) invert(1)';
+
+    }
   }
 
   /* Started Animations */
