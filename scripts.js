@@ -27,8 +27,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Obtener todos los elementos con la clase "animation-element"
+  var animationElements = document.querySelectorAll(".animation-element");
+
+  // Mantén un registro de elementos animados
+  var animatedElements = [];
+
+  function checkIfInView() {
+    var scrollThreshold = window.innerHeight * 0.1; // Umbral de desplazamiento
+    var windowTopPosition = window.pageYOffset;
+    var windowBottomPosition =
+      windowTopPosition + window.innerHeight - scrollThreshold;
+
+    animationElements.forEach(function (element) {
+      var elementHeight = element.offsetHeight;
+      var elementTopPosition =
+        element.getBoundingClientRect().top + windowTopPosition;
+      var elementBottomPosition = elementTopPosition + elementHeight;
+
+      // Comprueba si este contenedor actual está dentro del viewport
+      if (
+        elementBottomPosition >= windowTopPosition &&
+        elementTopPosition <= windowBottomPosition &&
+        !animatedElements.includes(element)
+      ) {
+        element.classList.add("in-view");
+        animatedElements.push(element); // Registra el elemento como animado
+      }
+    });
+  }
+
   // Llama a la función inicialmente y en el evento de desplazamiento
-  highlightNav();
+  // highlightNav();
 
   /* Cerrar navbar versión móvil */
   var navLinks = document.getElementsByClassName("nav-link");
@@ -41,6 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", () => {
     highlightNav();
+    checkIfInView();
+  });
+
+  // window.addEventListener("resize", checkIfInView);
+  window.addEventListener("load", () => {
+    highlightNav();
+    checkIfInView();
   });
 
   /* Dark mode - Ligth mode */
@@ -64,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     root.style.setProperty("--background-color2", "#000000");
 
     for (let i = 0; i < wave.length; i++) {
-      wave[i].style.filter = 'brightness(0%)';
+      wave[i].style.filter = "brightness(0%)";
     }
   }
 
@@ -72,14 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove("dark-theme");
     document.body.classList.add("light-theme");
 
-    root.style.setProperty("--background-color", "#f0f0f0");
+    root.style.setProperty("--background-color", "#f5f5f5");
     root.style.setProperty("--highlight", "gold");
     root.style.setProperty("--text-color", "black");
     root.style.setProperty("--background-color2", "#ffffff");
 
     for (let i = 0; i < wave.length; i++) {
-      wave[i].style.filter = 'brightness(0%) invert(1)';
-
+      wave[i].style.filter = "brightness(0%) invert(1)";
     }
   }
 
